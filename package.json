@@ -1,6 +1,6 @@
 {
   "name": "cousinsd-wp-theme",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Cousinsd wp theme",
   "main": "index.js",
   "repository": {
@@ -14,15 +14,35 @@
   },
   "homepage": "https://github.com/darrylcousins/cousinsd-wp-theme#readme",
   "scripts": {
+    "start": "gulp",
+    "build": "gulp build --prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "semantic-ui": "^2.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/register": "^7.6.0",
-    "gulp": "^4.0.2"
+    "autoprefixer": "^9.6.1",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^6.1.0",
+    "gulp-less": "^4.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglifycss": "^1.1.0",
+    "gulp-wp-pot": "^2.3.5",
+    "gulp-zip": "^5.0.0",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^5.2.1"
   }
 }
