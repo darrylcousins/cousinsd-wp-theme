@@ -32,6 +32,7 @@ add_action( 'after_setup_theme', '_themename_setup' );
  */
 function _themename_scripts() {
   wp_enqueue_style( '_themename-style', get_template_directory_uri() . '/dist/css/bundle.css' );
+  wp_enqueue_style( '_themename-tachyons', get_template_directory_uri() . '/dist/css/tachyons.min.css' );
   wp_enqueue_script( '_themename-scripts', get_template_directory_uri() . '/dist/js/bundle.js', array('jquery'), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );

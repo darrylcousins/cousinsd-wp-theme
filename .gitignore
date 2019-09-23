@@ -1,6 +1,6 @@
 *.swp
 node_modules
-semantic
+src/less/semantic-ui
 bundled
 dist
 languages

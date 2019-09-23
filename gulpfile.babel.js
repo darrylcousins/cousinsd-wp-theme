@@ -51,7 +51,7 @@ const srcFiles = {
   lessPath: 'src/less/**/*.less',
   jsPath: 'src/js/**/*.js',
   imagePath: 'src/images/**/*.{jpg,jpeg,png,svg,gif}',
-  copyPath: ['src/**/*','!src/{images,js,less}','!src/{images,js,less}/**/*'],
+  copyPath: ['src/**/*', '!src/{images,js,less}','!src/{images,js,less}/**/*'],
 }
 
 // Css task: compiles the bundle.less file into bundle.css
@@ -109,6 +109,12 @@ export const copy = () => {
     .pipe(gulp.dest('dist'));
 }
 
+// copy tachyons
+export const tachyons = () => {
+  return gulp.src('node_modules/tachyons/css/tachyons.min.css')
+    .pipe(gulp.dest('dist/css'));
+}
+
 // compress files for distribution
 export const compress = () => {
   return gulp.src([
@@ -149,6 +155,6 @@ export const watch = () => {
   gulp.watch('**/*.php', reload);
 }
 
-export const dev = gulp.series(clean, gulp.parallel(styles, images, copy, scripts), serve, watch);
-export const build = gulp.series(clean, gulp.parallel(styles, images, copy, scripts), pot, compress);
+export const dev = gulp.series(clean, gulp.parallel(styles, images, copy, scripts, tachyons), serve, watch);
+export const build = gulp.series(clean, gulp.parallel(styles, images, copy, scripts, tachyons), pot, compress);
 export default dev;

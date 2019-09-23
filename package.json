@@ -42,7 +42,7 @@
     "gulp-uglifycss": "^1.1.0",
     "gulp-wp-pot": "^2.3.5",
     "gulp-zip": "^5.0.0",
-    "tachyons": "^4.10.0",
+    "tachyons": "^4.11.1",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^5.2.1"
   }
