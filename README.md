@@ -16,16 +16,20 @@ Install packages:
 npm install
 ```
 
+## Serve and develop
+
 Serve development using `gulp watch` and `browserfy`:
 
 ```shell
-gulp
+npm start
 ```
+
+## Build
 
 Build bundled theme as zip file::
 
 ```shell
-gulp build
+npm build
 ```
 
 ## Wants ..
