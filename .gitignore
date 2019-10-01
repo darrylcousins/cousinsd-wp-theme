@@ -1,4 +1,5 @@
 *.swp
+demo
 node_modules
 src/less/semantic-ui
 bundled

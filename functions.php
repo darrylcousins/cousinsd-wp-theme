@@ -37,10 +37,21 @@ function _themename_scripts() {
 }
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );
 
-/* ADDS FAVICON TO HEADER */  
+/**
+ * Adds favicon to header
+ */
 function _themename_favicon() {  
   $favicon = get_template_directory_uri() . '/favicon.ico';
   echo '<link rel="shortcut icon" href="' . $favicon . '" type="image/x-icon" />';
   echo '<link rel="icon" href="' . $favicon . '" type="image/x-icon" />';
 }  
 add_action('wp_head', '_themename_favicon', 5);
+
+/**
+ * Adds theme body class
+ */
+add_filter( 'body_class','_themename_body_classes' );
+function _themename_body_classes( $classes ) {
+  $classes[] = 'sans-serif';
+  return $classes;
+}

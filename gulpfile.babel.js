@@ -9,7 +9,7 @@ import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
 import imagemin from 'gulp-imagemin';
 import named from 'vinyl-named';
-import less from 'gulp-less';
+import sass from 'gulp-sass';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import postcss from 'gulp-postcss';
@@ -24,9 +24,6 @@ import del from 'del';
 import info from './package.json';
 
 const PRODUCTION = yargs.argv.prod;
-
-// var watch = require('path/to/semantic/tasks/watch');
-// gulp.task('watch ui', watch);
 
 export const hello = (cb) => {
     console.log('Hello');
@@ -48,17 +45,17 @@ export const reload = done => {
 
 // File paths
 const srcFiles = { 
-  lessPath: 'src/less/**/*.less',
+  scssPath: 'src/scss/**/*.scss',
   jsPath: 'src/js/**/*.js',
   imagePath: 'src/images/**/*.{jpg,jpeg,png,svg,gif}',
-  copyPath: ['src/**/*', '!src/{images,js,less}','!src/{images,js,less}/**/*'],
+  copyPath: ['src/**/*', '!src/{images,js,scss}','!src/{images,js,scss}/**/*'],
 }
 
-// Css task: compiles the bundle.less file into bundle.css
+// Css task: compiles the bundle.scss file into bundle.css
 export const styles = () => {
-  return gulp.src(['src/less/bundle.less', 'src/less/admin.less'])
+  return gulp.src(['src/scss/bundle.scss', 'src/scss/admin.scss'])
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
-    .pipe(less())
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulpif(PRODUCTION, postcss([ autoprefixer ])))
     .pipe(gulpif(PRODUCTION, cleanCss({compatibility:'ie8'})))
     .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
@@ -111,8 +108,13 @@ export const copy = () => {
 
 // copy tachyons
 export const tachyons = () => {
-  return gulp.src('node_modules/tachyons/css/tachyons.min.css')
-    .pipe(gulp.dest('dist/css'));
+  if (PRODUCTION) {
+    return gulp.src('node_modules/tachyons/css/tachyons.min.css')
+      .pipe(gulp.dest('dist/css'));
+  } else {
+    return gulp.src('node_modules/tachyons/css/tachyons.css')
+      .pipe(gulp.dest('dist/css'));
+  }
 }
 
 // compress files for distribution
@@ -146,9 +148,9 @@ export const pot = () => {
 export const clean = () => del(['dist']);
 
 // Watch task: watch LESS and JS files for changes
-// If any change, run less and js tasks simultaneously
+// If any change, run scss and js tasks simultaneously
 export const watch = () => {
-  gulp.watch(srcFiles.lessPath, styles); // reload done with server stream in styles    
+  gulp.watch(srcFiles.scssPath, styles); // reload done with server stream in styles    
   gulp.watch(srcFiles.jsPath, gulp.series(scripts, reload)); 
   gulp.watch(srcFiles.imagePath, gulp.series(images, reload));
   gulp.watch(srcFiles.copyPath, gulp.series(copy, reload));
