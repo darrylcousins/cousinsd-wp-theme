@@ -23,17 +23,22 @@ if ( ! function_exists( '_themename_setup' ) ) :
     * provide it for us.
     */
     add_theme_support( 'title-tag' );
+
+    /*--- REMOVE GENERATOR META TAG ---*/
+    remove_action('wp_head', 'wp_generator');
   }
 endif;
 add_action( 'after_setup_theme', '_themename_setup' );
+
+define("THEME_DIR", get_template_directory_uri());
 
 /**
  * Enqueue scripts and styles.
  */
 function _themename_scripts() {
-  wp_enqueue_style( '_themename-style', get_template_directory_uri() . '/dist/css/bundle.css' );
-  wp_enqueue_style( '_themename-tachyons', get_template_directory_uri() . '/dist/css/tachyons.min.css' );
-  wp_enqueue_script( '_themename-scripts', get_template_directory_uri() . '/dist/js/bundle.js', array('jquery'), '1.0.0', true );
+  wp_enqueue_style( '_themename-style', THEME_DIR . '/dist/css/bundle.css' );
+  wp_enqueue_style( '_themename-tachyons', THEME_DIR . '/dist/css/tachyons.min.css' );
+  wp_enqueue_script( '_themename-scripts', THEME_DIR . '/dist/js/bundle.js', array('jquery'), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );
 

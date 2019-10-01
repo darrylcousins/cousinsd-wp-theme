@@ -6,6 +6,7 @@ import yargs from 'yargs';
 import webpack from 'webpack-stream';
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
+import eslint from 'gulp-eslint';
 import sourcemaps from 'gulp-sourcemaps';
 import imagemin from 'gulp-imagemin';
 import named from 'vinyl-named';
@@ -47,6 +48,7 @@ export const reload = done => {
 const srcFiles = { 
   scssPath: 'src/scss/**/*.scss',
   jsPath: 'src/js/**/*.js',
+  jsxPath: 'src/jsx/**/*.jsx',
   imagePath: 'src/images/**/*.{jpg,jpeg,png,svg,gif}',
   copyPath: ['src/**/*', '!src/{images,js,scss}','!src/{images,js,scss}/**/*'],
 }
@@ -62,6 +64,15 @@ export const styles = () => {
     .pipe(gulp.dest('dist/css'))
     .pipe(server.stream());
 }
+
+// lint javascript files
+export const jslint = () => {
+    return gulp.src([srcFiles.jsPath, srcFiles.jsxPath])
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError());
+}
+
 
 // scripts task: concatenates and uglifies js files to bundle.js
 export const scripts = () => {
