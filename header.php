@@ -21,19 +21,13 @@
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 -->
  
-    <!--=== TITLE ===-->  
-    <title><?php bloginfo('title'); ?> - <?php bloginfo( 'description' ); ?></title>
-     
     <!--=== WP_HEAD() ===-->
     <?php wp_head(); ?>
       
 </head>
   <body <?php body_class(); ?>>
  
-<!-- HERE GOES YOUR HEADER MARKUP, LIKE LOGO, MENU, SOCIAL ICONS AND MORE -->
-    <header class="pv5 pv6-ns ph2 ph4-ns">
+    <header class="pv1 pv2-ns ph1 ph2-ns tc">
       <h1 class="f1 f-headline-ns mb0 pb0"><?php bloginfo('title') ?></h1>
       <h2 class="f2 f1-ns i system-serif mid-gray"><?php bloginfo('description') ?></h2>
     </header>
- 
-<!-- DON'T FORGET TO CLOSE THE BODY TAG ON footer.php FILE -->

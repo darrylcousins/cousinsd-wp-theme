@@ -36,9 +36,9 @@ define("THEME_DIR", get_template_directory_uri());
  * Enqueue scripts and styles.
  */
 function _themename_scripts() {
-  wp_enqueue_style( '_themename-style', THEME_DIR . '/dist/css/bundle.css' );
-  wp_enqueue_style( '_themename-tachyons', THEME_DIR . '/dist/css/tachyons.min.css' );
-  wp_enqueue_script( '_themename-scripts', THEME_DIR . '/dist/js/bundle.js', array('jquery'), '1.0.0', true );
+  wp_enqueue_style( '_themename-style', THEME_DIR . '/dist/css/app.css' );
+  wp_enqueue_style( '_themename-tachyons', THEME_DIR . '/dist/css/tachyons.css' );
+  wp_enqueue_script( '_themename-scripts', THEME_DIR . '/dist/js/app.js', array(), false, true);
 }
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );
 
@@ -48,7 +48,9 @@ add_action( 'wp_enqueue_scripts', '_themename_scripts' );
 function _themename_favicon() {  
   $favicon = get_template_directory_uri() . '/favicon.ico';
   echo '<link rel="shortcut icon" href="' . $favicon . '" type="image/x-icon" />';
+  echo "\r\n";
   echo '<link rel="icon" href="' . $favicon . '" type="image/x-icon" />';
+  echo "\r\n";
 }  
 add_action('wp_head', '_themename_favicon', 5);
 
@@ -60,3 +62,9 @@ function _themename_body_classes( $classes ) {
   $classes[] = 'sans-serif';
   return $classes;
 }
+
+/**
+ * Remove emoji script and styles from head
+ */
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
