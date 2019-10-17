@@ -183,7 +183,7 @@ export const build = gulp.series(clean, gulp.parallel(styles, images, copy, scri
 export default dev;
 
 
-// DEPRECATED
+// ********************** DEPRECATED
 // copy react and react-dom files if newer
 export const copyReact = () => {
   var prefix = 'node_modules/react/umd/react';
@@ -202,7 +202,7 @@ export const copyReactDom = () => {
     .pipe(gulp.dest('src/js/vendor'));
 }
 
-// DEPRECATED
+// ********************** DEPRECATED
 // copy react files
 export const copyVendor = () => {
   return gulp.src('src/js/vendor/*')
