@@ -74,6 +74,7 @@ export const styles = () => {
 export const copyTachyons = () => {
   if (PRODUCTION) {
     return gulp.src('node_modules/tachyons/css/tachyons.min.css')
+      .pipe(rename('tachyons.css'))
       .pipe(gulp.dest('dist/css'));
   } else {
     return gulp.src('node_modules/tachyons/css/tachyons.css')
@@ -143,6 +144,7 @@ export const compress = () => {
         "**/*",
         "!node_modules{,/**}",
         "!bundled{,/**}",
+        "!demo{,/**}",
         "!src{,/**}",
         "!.babelrc",
         "!.gitignore",
