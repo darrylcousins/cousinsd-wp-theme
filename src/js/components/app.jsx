@@ -1,9 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  Route,
+  HashRouter
+} from "react-router-dom";
 
-import Game from './tictac.jsx';
-//import LikeButton from './demo.jsx';
+import Nav from './nav.jsx';
+import Home from '../pages/home.jsx';
+import Gallery from '../pages/gallery.jsx';
 
-//ReactDOM.render(<LikeButton />, document.querySelector('#react-demo'));
+class App extends React.Component {
+  render() {
 
-ReactDOM.render(<Game />, document.querySelector('#react-tictac'));
+    return (
+      <HashRouter>
+	<Nav />
+	<Route exact path="/" component={Home}/>
+	<Route path="/gallery" component={Gallery}/>
+      </HashRouter>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.querySelector('#react-root'));

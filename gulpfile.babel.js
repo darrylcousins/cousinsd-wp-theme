@@ -50,8 +50,8 @@ export const reload = done => {
 // File paths
 const srcFiles = { 
   scssPath: 'src/scss/**/*.scss',
-  jsxPath: 'src/js/components/*.jsx',
-  jsPath: 'src/js/components/*.js',
+  jsxPath: 'src/js/**/*.jsx',
+  jsPath: 'src/js/**/*.js',
   imagePath: 'src/images/**/*.{jpg,jpeg,png,svg,gif}',
   copyPath: ['src/**/*', '!src/{images,js,scss}','!src/{images,js,scss}/**/*'],
 }

@@ -1,0 +1,55 @@
+/* active link class for react-router-dom NavLink */ 
+a.active, a:active.active {
+  color: black;
+  font-weight: bold;
+}
+
+.item-divider {
+  display: block;
+  position: relative;
+  height: 3px;
+  background-color: currentColor;
+  width: 90px;
+  right: 0;
+  margin: 60px auto 30px;
+}
+
+/* scale text on hover */
+.move {
+  transition: transform .2s ease-in-out;
+  cursor: pointer;
+}
+.move:hover {
+  transform: translate(0, -10px);
+}
+
+/* Loading spinner: https://tobiasahlin.com/spinkit/ */
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}

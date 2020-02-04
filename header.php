@@ -25,9 +25,9 @@
     <?php wp_head(); ?>
       
 </head>
-  <body <?php body_class(); ?>>
+  <body <?php body_class(); ?> style="background: #374d6d">
  
-    <header class="pv1 pv2-ns ph1 ph2-ns tc">
-      <h1 class="f1 f-headline-ns mb0 pb0"><?php bloginfo('title') ?></h1>
-      <h2 class="f2 f1-ns i system-serif mid-gray"><?php bloginfo('description') ?></h2>
+    <header class="pv1 pv1-ns ph1 ph1-ns tc">
+      <h1 class="dn f1"><?php bloginfo('title') ?></h1>
+      <h2 class="dn f2 i system-serif mid-gray"><?php bloginfo('description') ?></h2>
     </header>

@@ -43,6 +43,17 @@ function _themename_scripts() {
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );
 
 /**
+ * Adds google font to header
+ */
+function _themename_font() {  
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>';
+  echo "\r\n";
+  echo '<link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">';
+  echo "\r\n";
+}  
+add_action('wp_head', '_themename_font', 5);
+
+/**
  * Adds favicon to header
  */
 function _themename_favicon() {  
