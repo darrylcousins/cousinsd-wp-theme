@@ -20,13 +20,13 @@ class Nav extends React.Component {
 	  style={scope.navLink}
 	  className={linkClass}
 	  title="Home" to="/">
-	  Home
+	  Gallery
 	</NavLink>
 	<NavLink
 	  style={scope.navLink}
 	  className={linkClass}
-	  title="Gallery" to="/gallery">
-	  Gallery
+	  title="Thoughts" to="/quotes">
+	  Thoughts
 	</NavLink>
       </nav>
     );

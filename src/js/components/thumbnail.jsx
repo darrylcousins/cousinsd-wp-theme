@@ -36,11 +36,11 @@ class Thumbnail extends React.Component {
 	backgroundSize: "cover",
 	backgroundPosition: "center",
 	backgroundRepeat: "no-repeat",
-	backgroundColor: "black",
+	backgroundColor: "#374d6d",
       },
       layerStyle:  {
 	background: "rgba(0, 0, 0, 0.4)",
-	minHeight: "500px",
+	minHeight: "550px",
 	paddingTop: "30px"
       }
     }
