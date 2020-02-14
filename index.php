@@ -1,9 +1,7 @@
 <?php
 get_header();
 ?>
-  <div class="center">
-    <div id="react-root"></div>
-  </div>
+  <div id="react-root"></div>
 <?php
 get_footer();
 ?>

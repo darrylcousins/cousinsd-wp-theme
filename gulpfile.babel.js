@@ -172,7 +172,7 @@ export const clean = () => del(['dist']);
 // Watch task: watch LESS and JS files for changes
 // If any change, run scss and js tasks simultaneously
 export const watch = () => {
-  gulp.watch(srcFiles.scssPath, styles); // reload done with server stream in styles    
+  gulp.watch(srcFiles.scssPath, gulp.series(styles, reload)); // reload done with server stream in styles    
   gulp.watch(srcFiles.jsPath, gulp.series(scripts, reload)); 
   gulp.watch(srcFiles.jsxPath, gulp.series(scripts, reload)); 
   gulp.watch(srcFiles.imagePath, gulp.series(images, reload));

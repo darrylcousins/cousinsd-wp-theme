@@ -1,19 +1,8 @@
-/* active link class for react-router-dom NavLink */ 
-a.active, a:active.active {
-  color: #c28159;
-  font-weight: bold;
-  opacity: 1.0;
-}
-
-.item-divider {
-  display: block;
-  position: relative;
-  height: 3px;
-  background-color: currentColor;
-  width: 90px;
-  right: 0;
-  margin: 60px auto 30px;
-}
+@import '_variables.scss';
+@import '_nav.scss';
+@import '_blockquotes.scss';
+@import '_spinner.scss';
+@import '_box.scss';
 
 /* scale text on hover */
 .move {
@@ -24,65 +13,3 @@ a.active, a:active.active {
   transform: translate(0, -10px);
 }
 
-/* Loading spinner: https://tobiasahlin.com/spinkit/ */
-.spinner {
-  width: 40px;
-  height: 40px;
-  margin: 100px auto;
-  background-color: #eee;
-
-  border-radius: 100%;  
-  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out;
-}
-
-@-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
-  100% {
-    -webkit-transform: scale(1.0);
-    opacity: 0;
-  }
-}
-
-@keyframes sk-scaleout {
-  0% { 
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 100% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-    opacity: 0;
-  }
-}
-
-/* blockquotes https://tympanus.net/codrops/css_reference/quotes/ */
-q,
-blockquote {
-  quotes: "“ " "”" "‘" "’";
-  font-style: italic;
-  line-height: 2em;
-}
-
-q:before,
-blockquote:before {
-  content: open-quote;
-}
-
-q:after,
-blockquote:after {
-  content: close-quote;
-}
-
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  color: #c28159;
-  font-size: 1.2em;
-}
-
-blockquote {
-  margin-left: 0;
-  padding-left: 1em;
-  border-left: 5px solid #c28159;
-}

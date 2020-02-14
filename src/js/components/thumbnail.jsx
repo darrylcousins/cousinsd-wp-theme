@@ -1,86 +1,113 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-class Thumbnail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-    const src = props.src;
-    this.imgid = src.split('/').slice(-1)[0].split('.').slice(0)[0];
-  }
+const LoaderImage = styled.img`
+  position: absolute;
+  top: -5000px;
+  left: -5000px;
+`;
 
-  handleImageLoaded() {
-    console.log("on load");
-    this.setState({ loading: false });
-  }
+const TeaserImage = styled.img`
+  webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+`;
 
-  handleImageErrored() {
-    console.log("on error");
-    this.setState({ loading: false });
-  }
+const Layer = styled.div`
+  background: rgba(0, 0, 0, 0.2);
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+`;
 
-  renderSpinner() {
-    if (!this.state.loading) {
-      return null;
-    }
-    return <div className="spinner" />;
-  }
+const Background = styled.div`
+  background-image: linear-gradient(black, black), url(${(props) => props.src});
+  background-size: cover;
+  background-blend-mode: saturation;
+`;
 
-  renderDiv() {
-    if (this.state.loading) {
-      return null;
-    }
-    const img = document.getElementById(this.imgid);
-    var scope = {
-      bgStyle:  {
-	backgroundImage: "url(" + this.props.src + ")",
-	backgroundSize: "cover",
-	backgroundPosition: "center",
-	backgroundRepeat: "no-repeat",
-	backgroundColor: "#374d6d",
-      },
-      layerStyle:  {
-	background: "rgba(0, 0, 0, 0.4)",
-	minHeight: "550px",
-	paddingTop: "30px"
-      }
-    }
-    return (
-      <div style={scope.bgStyle}>
-	<div style={scope.layerStyle} className="pv2 ph3 near-white">
-	  <div className="move">
-	    { this.props.children }
-	  </div>
-	</div>
-      </div>
-    )
-  }
+const Headline = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+`;
 
-  render() {
-    var scope = {
-      imgStyle:  {
-	position: "absolute",
-	top: "-5000px",
-	left: "-5000px"
-      }
-    }
-    return (
-      <div className="fl w-100 w-50-l">
-	<img
-	  id={this.imgid}
-	  src={this.props.src}
-	  style={scope.imgStyle}
-	  onLoad={this.handleImageLoaded.bind(this)}
-	  onError={this.handleImageErrored.bind(this)}
-	/>
-	{ this.renderDiv() }
-	{ this.renderSpinner() }
-      </div>
-    )
-  }
-}
+const Thumbnail = (props) => {
+  const [loading, setLoading] = React.useState(true);
+  const [hover, setHover] = React.useState(false);
+  const {
+    src, target, headline, children,
+  } = props;
+  const layerTop = 380;
+  const TextLayerStyle = {
+    position: "absolute",
+    left: "0px",
+    top: layerTop + "px",
+    background: "rgba(255, 255, 255, 1)",
+    color: "black",
+    height: "100%",
+  };
 
-//Thumbnail.propTypes = {
-//    src: React.PropTypes.string.isRequired
-//};
+  return (
+    <div className="fl w-100 w-50-m w-third-l">
+      <LoaderImage
+        src={src}
+        onLoad={() => setLoading(false)}
+        onError={() => setLoading(false)}
+      />
+
+      { loading ? <div className="spinner" /> : null }
+
+      { !loading ? (
+        <a
+          className="near-black no-underline center"
+          target="_blank"
+          href={target}
+          rel="noopener noreferrer"
+                onMouseEnter={ () => setHover(true) }
+                onMouseLeave={ () => setHover(false) }
+        >
+          <motion.div
+            className="ma2 pa3 box"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ opacity: { duration: 0.3 } }}
+          >
+            <Background src={src}>
+              <Layer
+                className="pv2 ph3 near-white">
+                <motion.div
+                  style={TextLayerStyle}
+                  animate={{ top: hover ? 0 : layerTop }}
+                  >
+                  <Headline
+                    className="tc mv3 f2 bg-white"
+                  >
+                    {headline}
+                  </Headline>
+                  <div className="pt4 bt b--near-black">
+                    <TeaserImage
+                      src={src}
+                      className="fl pa1 mw4 mh4 mb2 ba b--gray"
+                    />
+                    { children }
+                  </div>
+                </motion.div>
+              </Layer>
+            </Background>
+          </motion.div>
+        </a>
+      ) : null }
+    </div>
+  );
+};
+
+Thumbnail.propTypes = {
+  children: PropTypes.node.isRequired,
+  src: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired,
+  headline: PropTypes.string.isRequired,
+};
+
 export default Thumbnail;
-

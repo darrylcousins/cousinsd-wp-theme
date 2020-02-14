@@ -6,26 +6,29 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
  
-    <!--=== META TAGS ===-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
-    <meta name="description" content="Keywords">
-    <meta name="author" content="Darryl Cousins">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     
-    <!--=== LINK TAGS ===-->
-    <link rel="shortcut icon" href="<?php echo THEME_DIR; ?>/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="<?php echo THEME_DIR; ?>/favicon.ico" type="image/x-icon" />	
+  <!--=== META TAGS ===-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="<?php bloginfo( 'charset' ); ?>" />
+  <meta name="author" content="Darryl Cousins">
+  <meta name="copyright" content="(c) Copyright Darryl Cousins" />
+  <meta name="title" content="Darryl Cousins" />
+  <meta name="keywords" content="christchurch new zealand" />
+  <meta name="description" content="Darryl Cousins: coder, builder, maker" />
+   
+  <!--=== LINK TAGS ===-->
+  <link rel="shortcut icon" href="<?php echo THEME_DIR; ?>/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="<?php echo THEME_DIR; ?>/favicon.ico" type="image/x-icon" />	
 <!--
-    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS2 Feed" href="<?php bloginfo('rss2_url'); ?>" />
-    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+  <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS2 Feed" href="<?php bloginfo('rss2_url'); ?>" />
+  <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 -->
- 
-    <!--=== WP_HEAD() ===-->
-    <?php wp_head(); ?>
+
+  <!--=== WP_HEAD() ===-->
+  <?php wp_head(); ?>
       
 </head>
-  <body <?php body_class(); ?> style="background: #374d6d">
+  <body <?php body_class(); ?>>
  
     <header class="pv1 pv1-ns ph1 ph1-ns tc">
       <h1 class="dn f1"><?php bloginfo('title') ?></h1>

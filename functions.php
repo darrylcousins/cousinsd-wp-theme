@@ -36,8 +36,8 @@ define("THEME_DIR", get_template_directory_uri());
  * Enqueue scripts and styles.
  */
 function _themename_scripts() {
-  wp_enqueue_style( '_themename-style', THEME_DIR . '/dist/css/app.css' );
   wp_enqueue_style( '_themename-tachyons', THEME_DIR . '/dist/css/tachyons.css' );
+  wp_enqueue_style( '_themename-style', THEME_DIR . '/dist/css/app.css' );
   wp_enqueue_script( '_themename-scripts', THEME_DIR . '/dist/js/app.js', array(), false, true);
 }
 add_action( 'wp_enqueue_scripts', '_themename_scripts' );
@@ -48,10 +48,10 @@ add_action( 'wp_enqueue_scripts', '_themename_scripts' );
 function _themename_font() {  
   echo '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>';
   echo "\r\n";
-  echo '<link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">';
+  echo '<link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Montserrat:300,400&display=swap" rel="stylesheet">';
   echo "\r\n";
 }  
-add_action('wp_head', '_themename_font', 5);
+//add_action('wp_head', '_themename_font', 5);
 
 /**
  * Adds favicon to header

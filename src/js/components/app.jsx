@@ -1,25 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
+  BrowserRouter,
   Route,
-  HashRouter
-} from "react-router-dom";
+  Switch,
+  useLocation,
+} from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
+import WebFont from 'webfontloader';
 import Nav from './nav.jsx';
 import Quotes from '../pages/quotes.jsx';
 import Gallery from '../pages/gallery.jsx';
 
-class App extends React.Component {
-  render() {
+WebFont.load({
+  google: {
+    families: ['Covered By Your Grace', 'Montserrat:300,400'],
+  },
+});
 
-    return (
-      <HashRouter>
-	<Nav />
-	<Route exact path="/" component={Gallery}/>
-	<Route path="/quotes" component={Quotes}/>
-      </HashRouter>
-    )
-  }
+const App = () => {
+  const location = useLocation();
+
+  return (
+    <div className="center">
+      <Nav />
+      <AnimatePresence>
+        <Switch location={location} key={location.key}>
+          <Route path="/quotes" component={Quotes} />
+          <Route exact path="/" component={Gallery} />
+        </Switch>
+      </AnimatePresence>
+    </div>
+  );
 }
 
-ReactDOM.render(<App />, document.querySelector('#react-root'));
+ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.querySelector('#react-root'));

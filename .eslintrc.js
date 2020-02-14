@@ -21,5 +21,13 @@ module.exports = {
     'react',
   ],
   rules: {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "always",
+        "jsx": "always",
+      }
+    ],
   },
 };

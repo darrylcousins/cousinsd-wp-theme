@@ -1,0 +1,102 @@
+/* Common styles for all menus */
+.menu {
+  line-height: 1;
+  margin-left: 3em;
+}
+
+.menu__list {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__item {
+  display: block;
+  margin: 1em 0;
+}
+
+.menu--shylock .menu__link {
+}
+
+.menu__link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.5em;
+  text-decoration: none;
+  position: relative;
+  margin: 0 1em;
+  padding: 1em 0 1em 0;
+  color: $nav-link-color;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+  display: block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.menu__link.active,
+.menu__link.active:hover,
+.menu__link.active:focus {
+  color: $nav-link-active-color;
+}
+
+.menu__link.active::after,
+.menu__link.active::before {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+}
+
+.menu__link.active::before {
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.menu__link:hover,
+.menu__link:focus {
+  color: $nav-link-color;
+}
+
+.menu__link:hover::before,
+.menu__link:focus::before {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.menu__link::before,
+.menu__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  -webkit-transform: scale3d(0, 1, 1);
+  transform: scale3d(0, 1, 1);
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+  -webkit-transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.menu__link::before {
+  background: $nav-link-color;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.menu__link::after {
+  background: $nav-link-active-color;
+}
