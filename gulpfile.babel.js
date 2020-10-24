@@ -38,7 +38,7 @@ export const hello = (cb) => {
 const server = browserSync.create();
 export const serve = done => {
   server.init({
-    proxy: 'http://localhost' // put your local website link here
+    proxy: 'localhost:3001' // put your local website link here
   });
   done();
 };
